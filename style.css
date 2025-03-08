@@ -1,0 +1,179 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-sizing: border-box;
+}
+
+:root{
+    --bg-color: #f5f5f5;
+    --text-color: #000000;
+}
+
+body{
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+    background-color: var(--bg-color);
+}
+
+
+.app-header{
+    width: 100%;
+    height: 70px;
+    background-color: var(--bg-color);
+    margin: 0 2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+
+    .header-text{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 10px;
+        margin: 10px;
+        text-align: center;
+        height: 80%;
+        h1{
+            font-size: 30px;
+            margin: 0 25px 0 5px;
+        };
+        p{
+            font-size: 16px;
+            padding: 10px;
+        };
+    };
+    .nav-items{
+        padding: 10px;
+        ul{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            list-style-type: none;
+            li{
+                padding: 5px 15px;
+                margin: 15px;
+                font-size: 24px;
+                font-weight: 600;
+                border: 2px solid transparent;
+                border-radius: 20px;
+                background-color: #d32f2f;
+                color: #ffffff;
+                transition: transform 0.3s ease;
+            };
+        };
+    };
+}
+.nav-items > ul > li:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.search-box{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-color);
+    border-radius: 20px;
+    border: 2px solid transparent;
+    padding: 5px;
+
+    .input-box{
+        outline: none;
+        padding: 10px 15px;
+        font-size: 22px;
+        font-weight: 600;
+        width: auto;
+        height: 50px;
+        border: 2px solid transparent;
+        border-radius: 15px 15px 3px 3px;
+        text-transform: capitalize;
+        background: transparent;
+    };
+    .input-box:focus{
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        border-bottom: 2px solid #b71c1c;
+    }
+    .input-box::placeholder{
+        color: #797777;
+    };
+
+    button{
+        height: 50px;
+        background: transparent;
+        padding: 15px 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: transform 0.3s ease;
+        margin: 5px;
+    };
+    button:hover{
+        cursor: pointer;
+        transform: scale(1.1);
+    };
+}
+
+.placeholder-container{
+    position: relative;
+    width: 100%;
+    margin-top: 10px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .placeholder-img{
+        width: 100%;
+        height: min-content;
+        display: flex;
+
+        .weather-image{
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin: 0 15px 15px 15px;
+        };
+
+        .image-text{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: var(--text-color);
+            padding: 20px;
+        };
+        .image-text>h1{
+            font-size: 32px;
+            font-weight: bold
+        };
+        .image-text>p{
+            font-size: 18px;
+            margin: 5px 0 15px 0;
+            font-weight: 500;
+        };
+    };
+
+    .search-area{
+        width: max-content;
+        height: 60px;
+        padding: 0 15px;
+        position: absolute;
+        top: 90%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        background: var(--bg-color);
+        border-radius: 30px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+}

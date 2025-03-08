@@ -1,0 +1,35 @@
+{
+  "name": "react-weather-project",
+  "version": "1.0.0",
+  "description": "live weather page using react",
+  "keywords": [
+    "react",
+    "live-weather"
+  ],
+  "homepage": "https://github.com/atul030702/react-liveWeather#readme",
+  "bugs": {
+    "url": "https://github.com/atul030702/react-liveWeather/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atul030702/react-liveWeather.git"
+  },
+  "license": "ISC",
+  "author": "Atul Kumar",
+  "type": "module",
+  "main": "script.js",
+  "scripts": {
+    "test": "jest",
+    "start": "parcel index.html --port 3000",
+    "build": "parcel build index.html"
+  },
+  "dependencies": {
+    "parcel": "^2.13.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.2.0"
+  },
+  "devDependencies": {
+    "process": "^0.11.10"
+  }
+}
