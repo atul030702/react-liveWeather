@@ -34,7 +34,7 @@ body{
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
-        padding: 10px;
+        padding: 5px;
         margin: 10px;
         text-align: center;
         height: 80%;
@@ -44,11 +44,33 @@ body{
         };
         p{
             font-size: 16px;
-            padding: 10px;
+            padding: 5px 10px;
         };
+        .aqi-standard{
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+
+            .aqi-header{
+                font-size: 14px;
+                font-weight: 550;
+            };
+
+            .aqi-body{
+                display: flex;
+                padding: 0 5px;
+
+                img{
+                    height: 25px;
+                    width: 40px;
+                };
+            };
+        }
     };
     .nav-items{
-        padding: 10px;
+        margin: 10px;
+        padding: 5px;
         ul{
             display: flex;
             justify-content: space-between;
@@ -92,13 +114,11 @@ body{
         width: auto;
         height: 50px;
         border: 2px solid transparent;
-        border-radius: 15px 15px 3px 3px;
         text-transform: capitalize;
         background: transparent;
     };
     .input-box:focus{
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        border-bottom: 2px solid #b71c1c;
     }
     .input-box::placeholder{
         color: #797777;
@@ -176,4 +196,10 @@ body{
         border-radius: 30px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
+}
+
+.separator{
+    width: 2px;
+    background-color: #d7d2cc;
+    align-self: stretch;
 }

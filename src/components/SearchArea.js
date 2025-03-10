@@ -1,5 +1,6 @@
 import my_location from "../assets/my_location.svg";
 import search from "../assets/search.svg";
+import { Separator } from "./Separator.js";
 
 const SearchArea = () => {
     return (
@@ -7,9 +8,9 @@ const SearchArea = () => {
             <button className="location-icon">
                 <img src={my_location} alt="my-location-icon"/>
             </button>
-            <div className="separator"></div>
+            <Separator />
             <input type="text" required placeholder="Enter City Name" className="input-box"/>
-            <div className="separator"></div>
+            <Separator />
             <button className="search-image">
                 <img src={search} alt="search-icon" />
             </button>
