@@ -23,7 +23,7 @@ const Header = () => {
             <div className="nav-items">
                 <ul>
                     <li>Home</li>
-                    <li>About</li>
+                    <li>Forecast</li>
                 </ul>
             </div>
         </div>

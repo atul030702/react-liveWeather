@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
 
 import Header from "./components/Header.js";
 import Body from "./components/Body.js";
+import Footer from "./components/Footer.js";
 
 const AppLayout = () => {
     return (
@@ -16,6 +17,15 @@ const AppLayout = () => {
     );
 };
 
+const HomePage = () => {
+    return (
+        <>
+            <Body />
+            <Footer />
+        </>
+    );
+};
+
 const appRouter = createBrowserRouter([
     {
         path: "/",
@@ -23,12 +33,12 @@ const appRouter = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <Body />
+                element: <HomePage />
             },
         ],
 
     },
-])
+]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<RouterProvider router={appRouter} />);
