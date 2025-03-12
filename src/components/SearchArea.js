@@ -38,7 +38,7 @@ const SearchArea = () => {
     const handleSearch = () => {
         const trimmedText = searchText.trim();
         if(!trimmedText) {
-            setPlaceholder("Enter a valid city name to proceed");
+            setPlaceholder("Enter a valid city name");
             setSearchText("");
             return;
         }

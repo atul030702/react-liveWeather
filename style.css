@@ -9,14 +9,13 @@
 :root{
     --bg-color: #f5f5f5;
     --text-color: #000000;
-    --shadow-primary: 0 4px 10px rgba(0, 0, 0, 0.2);
     --radius-children: 12px;
+    --background-color-child: #d3d3d3;
 }
 
 body{
     min-height: 100vh;
     overflow: hidden;
-    position: relative;
     background-color: var(--bg-color);
     display: flex;
     flex-direction: column;
@@ -151,7 +150,7 @@ body{
     margin-top: 10px;
     height: 250px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
 
@@ -170,8 +169,8 @@ body{
 
         .image-text{
             position: absolute;
-            top: 50%;
-            left: 50%;
+            top: 45%;
+            left: 45%;
             transform: translate(-50%, -50%);
             text-align: center;
             color: var(--text-color);
@@ -189,11 +188,11 @@ body{
     };
 
     .search-area{
-        width: max-content;
+        width: 500px;
         height: 60px;
         padding: 0 15px;
         position: absolute;
-        top: 90%;
+        top: 80%;
         left: 50%;
         transform: translate(-50%, -50%);
         display: flex;
@@ -209,14 +208,18 @@ body{
     align-self: stretch;
 }
 
+.weather-container{
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+
 .current-weather-card{
-    width: auto;
+    width: 100%;
     height: min-content;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-block: 15px;
-    position: relative;
+    margin-block: 25px;
 
     .current-card{
         width: 100%;
@@ -227,24 +230,25 @@ body{
         align-items: flex-start;
 
         .time-info{
-            width: 100%;
+            width: 550px;
             font-size: 18px;
             font-weight: bold;
             padding: 10px;
-            margin-block: 5px;
             text-align: center;
-            box-shadow: var(--shadow-primary);
             border-radius: var(--radius-children);
+            background-color: var(--background-color-child);
         };
     
         .location-info{
+            width: 550px;
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
+            flex-wrap: wrap;
             padding: 5px;
-            margin: 10px 5px;
-            box-shadow: var(--shadow-primary);
+            margin: 10px 0;
             border-radius: var(--radius-children);
+            background-color: var(--background-color-child);
     
             h2, h3{
                 margin-right: 5px;
@@ -254,53 +258,148 @@ body{
             };
         };
 
-        .condition-element{
+        .aqi-element{
+            width: 550px;
+            height: min-content;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
+            border-radius: var(--radius-children);
+            background-color: var(--background-color-child);
+            margin-bottom: 5px;
 
-            .temperature{
+            .aqi-heading{
+                width: 100%;
+                height: min-content;
                 display: flex;
-                flex-direction: column;
                 align-items: center;
-                justify-content: center;
-                margin: 10px 5px;
-                padding: 15px;
-                box-shadow: var(--shadow-primary);
-                border-radius: var(--radius-children);
-                text-align: center;
-        
-                .current-temp{
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    padding: 5px;
-                };
+                justify-content: flex-start;
+                gap: 5px;
+                padding-left: 15px;
             };
-            .current-condition{
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                box-shadow: var(--shadow-primary);
-                border-radius: var(--radius-children);
-                padding: 10px 5px;
-                margin-block: 5px;
 
-                img{
-                    height: 75px;
-                    width: 75px;
-                };
-                h3{
-                    font-size: 20px;
-                    font-weight: bold;
-                };
-                p{
-                    font-size: 18px;
+            .aqi-body{
+                width: 100%;
+                height: min-content;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+                padding: 5px;
+
+                div{
+                    width: auto;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 5px;
+                    padding: 5px 12px;
+                    background-color: #1e2a36;
+                    border-radius: 25px;
+                    h4{
+                        color: #f5f5f5;
+                    };
                 };
             };
         };
+
+        .condition-temp-wind-humidity-div{
+            width: 100%;
+            height: min-content;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: column;
+            gap: 5px;
+
+            .condition-element{
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+    
+                .temperature{
+                    width: 200px;
+                    height: auto;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 5px 5px 5px 0;
+                    padding: 15px;
+                    background-color: var(--background-color-child);
+                    border-radius: var(--radius-children);
+                    text-align: center;
+            
+                    .current-temp{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 5px;
+                    };
+                };
+                .current-condition{
+                    width: 200px;
+                    height: auto;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: var(--background-color-child);
+                    border-radius: var(--radius-children);
+                    padding: 0 10px 10px 10px;
+                    margin: 5px 0 5px 5px;
+                    text-align: center;
+                    
+                    img{
+                        height: 75px;
+                        width: 75px;
+                    };
+                    h3{
+                        font-size: 20px;
+                        font-weight: bold;
+                    };
+                    p{
+                        font-size: 18px;
+                    };
+                };
+            };
+
+            .wind-humidity-element{
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .humidity-element{
+                    width: 200px;
+                    height: min-content;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: var(--background-color-child);
+                    border-radius: var(--radius-children);
+                    padding: 10px;
+                    margin: 5px 5px 5px 0;
+                };
+                .wind-element{
+                    width: 200px;
+                    height: min-content;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: var(--background-color-child);
+                    border-radius: var(--radius-children);
+                    padding: 10px;
+                    margin: 5px 0 5px 5px;
+                };
+            };
+        };
+
     };
 
     
