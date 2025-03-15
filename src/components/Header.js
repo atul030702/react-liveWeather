@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import usaFlag from "../assets/usa-flag.png";
 import { Separator } from "./Separator.js";
 
@@ -10,7 +8,7 @@ const Header = () => {
                 <h1>SU30 Weather</h1>
                 <p>Current</p>
                 <Separator />
-                <p>7-day forecast</p>
+                <p>3-day forecast</p>
                 <Separator />
                 <div className="aqi-standard">
                     <p className="aqi-header">AQI Standard</p>

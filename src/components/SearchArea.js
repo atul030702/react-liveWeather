@@ -1,23 +1,21 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import my_location from "../assets/my_location.svg";
 import search from "../assets/search.svg";
 import { Separator } from "./Separator.js";
 import { url } from "../utils.js";
 
-import WeatherDataCard from "./CurrentWeatherCard.js";
-
-const SearchArea = () => {
+const SearchArea = ({ setWeather, setError }) => {
     const [searchText, setSearchText] = useState("");
-    const [weather, setWeather] = useState(null);
+    //const [weather, setWeather] = useState(null);
     const [placeholder, setPlaceholder] = useState("Enter City Name");
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState("");
+    //const [error, setError] = useState("");
 
     const weatherDataFromAPI =async (city) => {
         try {
             setLoading(true);
-            const response = await fetch(`${url}&q=${city}&days=7&aqi=yes`);
+            const response = await fetch(`${url}&q=${city}&days=3&aqi=yes`);
             if(!response.ok) {
                 throw new Error("City not found");
             }
@@ -70,10 +68,6 @@ const SearchArea = () => {
                 >
                     <img src={search} alt="search-icon" />
                 </button>
-            </div>
-            <div className="weather-details">
-                <p className="error-message">{error}</p>
-                <WeatherDataCard weatherData={weather} />
             </div>
         </div>
     );

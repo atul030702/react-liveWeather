@@ -1,9 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
+import WeatherDataCard from "./CurrentWeatherCard.js";
 import SearchArea from "./SearchArea.js";
 import backgroundImage from "../assets/backgroundImage.png";
 
+
 const BodyPlaceholder = () => {
+    const [weather, setWeather] = useState(null);
+    const [error, setError] = useState("");
+
     return (
         <div className="placeholder-container">
             <div className="placeholder-img">
@@ -14,8 +19,9 @@ const BodyPlaceholder = () => {
                 </div>
             </div>
             <div className="search-area">
-                <SearchArea />
+                <SearchArea setWeather={setWeather} setError={setError}/>
             </div>
+            <WeatherDataCard weatherData={weather} error={error}/>
         </div>
     )
 };
