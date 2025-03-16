@@ -14,7 +14,7 @@ const AqiDetails = ({ aqiData }) => {
     }
 
     const usEpaIndex = aqiData["us-epa-index"];
-    const { pm2_5, pm10, o3, so2 } = aqiData || {};
+    const { pm2_5, pm10, o3, so2, co, no2 } = aqiData || {};
 
     return (
         <div className="aqi-element">
@@ -39,13 +39,23 @@ const AqiDetails = ({ aqiData }) => {
                     <p>µg/m³</p>
                 </div>
                 <div>
-                    <h4>O<sub>3</sub></h4>
+                    <h4>O<sub>3</sub> (Ozone)</h4>
                     <h3>{o3?.toFixed(1)}</h3>
                     <p>µg/m³</p>
                 </div>
                 <div>
                     <h4>SO<sub>2</sub></h4>
                     <h3>{so2?.toFixed(1)}</h3>
+                    <p>µg/m³</p>
+                </div>
+                <div>
+                    <h4>NO<sub>2</sub></h4>
+                    <h3>{no2?.toFixed(1)}</h3>
+                    <p>µg/m³</p>
+                </div>
+                <div>
+                    <h4>CO</h4>
+                    <h3>{co?.toFixed(1)}</h3>
                     <p>µg/m³</p>
                 </div>
             </div>
