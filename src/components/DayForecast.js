@@ -38,10 +38,10 @@ const DayForecast = ({ dayForecastData }) => {
     }*/
 
     return (
-        <div className="day-forecast">
-            <h2>Today's Weather Forecast</h2>
+        <div className="day-forecast-element">
+            <h2 className="header-text">Today's Weather Forecast</h2>
             <div className="body-element">
-                <div>
+                <div className="day-forecast-description">
                     <img src={condition?.icon} alt="weather-description-image"/>
                     <h4>{condition?.text}</h4>
                     
@@ -49,15 +49,15 @@ const DayForecast = ({ dayForecastData }) => {
                 <div className="minmax-temperature">
                     <div>
                         <img src={minTempImg} alt="minimum-temperature-icon" />
-                        <h3>Minimum Temperature: {mintemp_c?.toFixed(1)}°C</h3>
+                        <h3>Min Temperature: {mintemp_c?.toFixed(1)}°C</h3>
                     </div>
 
                     <div>
                         <img src={maxTempImg} alt="maximum-temperature-icon" />
-                        <h3>Maximum Temperature: {maxtemp_c?.toFixed(1)}°C</h3>
+                        <h3>Max Temperature: {maxtemp_c?.toFixed(1)}°C</h3>
                     </div>
                 </div>
-                <div>
+                <div className="avg-humidity-element">
                     <img src={avgHumidity} alt="average-humidity-icon" />
                     <h3>Average Humidity: {avghumidity}%</h3>
                 </div>
@@ -65,9 +65,9 @@ const DayForecast = ({ dayForecastData }) => {
                     <img src={uvIndex} alt="uv-index-icon" />
                     <h3>UV Index: {uv}</h3>
                 </div>
-                <div>
-                    <h4>Chance of Rain: {daily_chance_of_rain}</h4>
-                    <h4>Chance of Snow: {daily_chance_of_snow}</h4>
+                <div className="chances-element">
+                    <h4>Prediction for Rain: {daily_chance_of_rain?.toFixed(1)}%</h4>
+                    <h4>Prediction for Snow: {daily_chance_of_snow?.toFixed(1)}%</h4>
                 </div>
             </div>
         </div>
