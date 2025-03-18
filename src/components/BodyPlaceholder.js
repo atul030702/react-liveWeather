@@ -8,6 +8,7 @@ import backgroundImage from "../assets/backgroundImage.png";
 const BodyPlaceholder = () => {
     const [weather, setWeather] = useState(null);
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
 
     return (
         <div className="placeholder-container">
@@ -19,9 +20,9 @@ const BodyPlaceholder = () => {
                 </div>
             </div>
             <div className="search-area">
-                <SearchArea setWeather={setWeather} setError={setError}/>
+                <SearchArea setWeather={setWeather} setError={setError} setLoading={setLoading}/>
             </div>
-            <WeatherDataCard weatherData={weather} error={error}/>
+            <WeatherDataCard weatherData={weather} error={error} loading={loading}/>
         </div>
     )
 };

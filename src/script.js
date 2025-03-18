@@ -5,11 +5,11 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
 import Header from "./components/Header.js";
 import Body from "./components/Body.js";
 import Footer from "./components/Footer.js";
+import Forecast from "./components/Forecast.js";
 
 const AppLayout = () => {
     return (
         <div className="app">
-            {/**Header component */}
             <Header />
 
             <Outlet />
@@ -34,6 +34,10 @@ const appRouter = createBrowserRouter([
             {
                 path: "/",
                 element: <HomePage />
+            },
+            {
+                path: "/forecast",
+                element: <Forecast />
             },
         ],
 

@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 import usaFlag from "../assets/usa-flag.png";
 import { Separator } from "./Separator.js";
 
@@ -20,8 +22,12 @@ const Header = () => {
             </div>
             <div className="nav-items">
                 <ul>
-                    <li>Home</li>
-                    <li>Forecast</li>
+                    <li>
+                        <Link to="/">Home</Link>
+                    </li>
+                    <li>
+                        <Link to="/forecast">Forecast</Link>
+                    </li>
                 </ul>
             </div>
         </div>

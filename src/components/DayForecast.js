@@ -4,6 +4,7 @@ import avgHumidity from "../assets/humidity.svg";
 import uvIndex from "../assets/uv-index.png";
 
 
+
 const DayForecast = ({ dayForecastData }) => {
     console.log(dayForecastData);
 
@@ -16,26 +17,6 @@ const DayForecast = ({ dayForecastData }) => {
         daily_chance_of_rain,
         daily_chance_of_snow,
     } = dayForecastData?.day;
-    
-    /**const getUpcomingHourForecast = (hourlyData) => {
-
-        const currentEpoch = Math.floor(Date.now() / 1000);
-
-        return hourlyData.filter((hour) => {
-            hour.time_epoch >= currentEpoch;
-        });
-    };
-
-    const formatTime12Hour = (timeEpoch) => {
-        const date = new Date(timeEpoch * 1000);
-        let hours = date.getHours();
-        const minutes = date.getMinutes().toString().padStart(2, '0');
-        const ampm = hours >= 12 ? "PM" : "AM";
-
-        hours = hours % 12 || 12;
-
-        return `${hours}: ${minutes} ${ampm}`;
-    }*/
 
     return (
         <div className="day-forecast-element">

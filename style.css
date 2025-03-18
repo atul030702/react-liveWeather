@@ -6,11 +6,16 @@
     box-sizing: border-box;
 }
 
+img{
+    pointer-events: none;
+    -webkit-user-drag: none;
+}
+
 :root{
     --bg-color: #ffffff;
     --text-color: #000000;
     --radius-children: 12px;
-    --background-color-child: #ececec;
+    --background-color-child: #d3d3d3;
     --display-flex: flex;
 }
 #night-background-color{
@@ -76,14 +81,17 @@ body{
             };
         }
     };
+
     .nav-items{
         margin: 10px;
         padding: 5px;
+
         ul{
             display: flex;
             justify-content: space-between;
             align-items: center;
             list-style-type: none;
+
             li{
                 padding: 5px 15px;
                 margin: 15px;
@@ -94,6 +102,11 @@ body{
                 background-color: #d32f2f;
                 color: #ffffff;
                 transition: transform 0.3s ease;
+            };
+
+            a{
+                text-decoration: none;
+                color: inherit;
             };
         };
     };
@@ -127,9 +140,9 @@ body{
     };
     .input-box:focus{
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    }
+    };
     .input-box::placeholder{
-        color: #797777;
+        color: var(--placeholder-color, #a0a0a0);
     };
 
     button{
@@ -282,7 +295,6 @@ body{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    flex-wrap: wrap;
     margin-top: 10px;
 
     .header-text{
@@ -404,7 +416,7 @@ body{
     padding-bottom: 40px;
 
     .current-card{
-        width: 50%;
+        width: max-content;
         height: max-content;
         display: var(--display-flex);
         justify-content: center;
@@ -555,12 +567,136 @@ body{
     }; 
 
     .day-forecast{
-        width: 25%;
+        width: max-content;
         height: min-content;
         display: var(--display-flex);
         margin: 0 10px 15px 15px;
     };
 }
+
+.shimmer-element{
+    --background-color-child: #ECECEC;
+    width: 100%;
+    height: min-content;
+    display: var(--display-flex);
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 30px 20px 20px 20px;
+
+    .current-card-shimmer{
+        width: 880px;
+        height: 525px;
+        display: var(--display-flex);
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 5px 10px;
+        gap: 5px;
+
+        .date-card{
+            width: 100%;
+            height: 50px;
+            margin-block: 5px;
+            background-color: var(--background-color-child);
+            border-radius: var(--radius-children);
+        };
+
+        .location-card{
+            width: 100%;
+            height: 60px;
+            margin-block: 5px;
+            background-color: var(--background-color-child);
+            border-radius: var(--radius-children);
+        };
+
+        .condition-card{
+            width: 100%;
+            height: 160px;
+            display: var(--display-flex);
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-block: 5px;
+
+            .temp-card,
+            .description-card {
+                width: 200px;
+                height: 150px;
+                margin: 5px;
+                border-radius: var(--radius-children);
+                background-color: var(--background-color-child);
+            };
+
+            .humidity-visibility-card,
+            .wind-pressure-card{
+                width: 200px;
+                height: 150px;
+                margin: 5px;
+                display: var(--display-flex);
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                gap: 5px;
+
+                .humidity-card,
+                .visibility-card,
+                .wind-card,
+                .pressure-card {
+                    width: 100%;
+                    height: 65px;
+                    border-radius: var(--radius-children);
+                    background-color: var(--background-color-child);
+                    margin-block: 5px;
+                };
+            };
+        };
+
+        .aqi-card{
+            width: 100%;
+            height: 190px;
+            margin-block: 5px;
+            background-color: var(--background-color-child);
+            border-radius: var(--radius-children);
+        };
+    };
+
+    .day-forecast-card{
+        height: 525px;
+        width: 315px;
+        display: var(--display-flex);
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin: 5px 0 0 10px;
+
+        .header-card{
+            height: 50px;
+            width: 100%;
+            background-color: var(--background-color-child);
+            border-radius: var(--radius-children);
+            padding: 10px;
+            margin-block: 10px;
+        };
+
+        .body-card{
+            width: 100%;
+            height: 445px;
+            border-radius: var(--radius-children);
+            background-color: var(--background-color-child);
+            margin: 5px;
+        };
+    };
+}
+@keyframes fadeInOut {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50%{
+        opacity: 1;
+    }
+}
+.shimmer-element{animation: fadeInOut 2s infinite ease-in-out;}
 
 .footer-container{
     display: var(--display-flex);

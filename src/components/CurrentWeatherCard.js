@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import AqiDetails from "./AqiDetail.js";
 import DayForecast from "./DayForecast.js";
+import Shimmer from "./Shimmer.js";
 
 import location from "../assets/location.svg";
 import hotTemperature from "../assets/temperature_high.svg";
@@ -14,8 +15,9 @@ import visibilityImg from "../assets/visibility.svg";
 import pressureImg from "../assets/pressure.svg";
 
 const WeatherDataCard = (props) => {
-    const { weatherData, error } = props;
+    const { weatherData, error, loading } = props;
     if(!weatherData) return null;
+    if(loading) return <Shimmer/>;
     console.log(weatherData);
     const [timeInfo, setTimeInfo] = useState("");
 
@@ -36,7 +38,7 @@ const WeatherDataCard = (props) => {
         setTimeInfo(updateTimeInfo());
 
         const interval = setInterval(() => {
-            setTimeInfo(updateTimeInfo);
+            setTimeInfo(updateTimeInfo());
         }, 30000);
 
         return () => clearInterval(interval);
@@ -53,14 +55,14 @@ const WeatherDataCard = (props) => {
     };
 
     const getRegionName = (region) => {
-        if(!region) return "";
+        if(!region || typeof region !== "string") return "";
         const parts = region.split(",");
         return parts.length > 1 ? parts[1].trim() : parts[0];
     };
 
 
     const searchedLocation = weatherData?.location;
-    const currentTemperature = weatherData?.current?.heatindex_c?.toFixed(1) ?? weatherData?.current?.temp_c?.toFixed(1);
+    const currentTemperature = weatherData?.current?.heatindex_c?.toFixed(1) ?? weatherData?.current?.temp_c?.toFixed(1) ?? "--";
     const feelsLikeTemp = weatherData?.current?.feelslike_c;
     const currentCondition = weatherData?.current?.condition;
     const dayOrNightIndex = weatherData?.current?.is_day;
@@ -86,7 +88,7 @@ const WeatherDataCard = (props) => {
                     </div>
                     <div className="state-country-element">
                         <h3>{getRegionName(searchedLocation?.region)}, {searchedLocation?.country}</h3>
-                        <img src={isDayOrNight(dayOrNightIndex)} />
+                        <img src={isDayOrNight(dayOrNightIndex)} alt="day-or-night-icon"/>
                     </div>  
                 </div>
                 
