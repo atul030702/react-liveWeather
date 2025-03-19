@@ -14,12 +14,22 @@ import humidityImg from "../assets/humidity_percentage.svg";
 import visibilityImg from "../assets/visibility.svg";
 import pressureImg from "../assets/pressure.svg";
 
-const WeatherDataCard = (props) => {
-    const { weatherData, error, loading } = props;
-    if(!weatherData) return null;
-    if(loading) return <Shimmer/>;
-    console.log(weatherData);
+const WeatherDataCard = ({ weatherData, error, loading }) => {
+
     const [timeInfo, setTimeInfo] = useState("");
+    const [showShimmer, setShowShimmer] = useState(false);
+
+    useEffect(() => {
+        if (loading) {
+            setShowShimmer(true);
+        }
+
+        const timer = setTimeout(() => {
+            setShowShimmer(false);
+        }, 750);
+
+        return () => clearTimeout(timer);
+    }, [loading]);
 
     const updateTimeInfo = () => {
         const date = new Date();
@@ -33,7 +43,6 @@ const WeatherDataCard = (props) => {
         };
         return date.toLocaleDateString([], options).replace(" at ", " ");
     };
-
     useEffect(() => {
         setTimeInfo(updateTimeInfo());
 
@@ -43,6 +52,10 @@ const WeatherDataCard = (props) => {
 
         return () => clearInterval(interval);
     }, []);
+
+    if(!weatherData) return null;
+    if(showShimmer) return <Shimmer/>;
+    console.log(weatherData);
 
     const getTemperatureImage = (temp) => {
         if (temp <= 16) return lowTemperature;
@@ -150,7 +163,7 @@ const WeatherDataCard = (props) => {
 
             </div>
             <div className="day-forecast">
-                <DayForecast dayForecastData={dayData[0]} />
+                <DayForecast dayForecastData={dayData?.[0]} />
             </div>
         </div>
     );

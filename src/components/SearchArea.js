@@ -17,7 +17,6 @@ const SearchArea = ({ setWeather, setError, setLoading }) => {
                 throw new Error("City not found");
             }
             const data = await response.json();
-
             setWeather(data);
             setError("");
         } catch (error) {
@@ -48,11 +47,14 @@ const SearchArea = ({ setWeather, setError, setLoading }) => {
                     } catch (error) {
                         console.error(`Error fetching data: ${error}`);
                         setError("Failed to fetch weather data for your location");
+                    } finally {
+                        setLoading(false);
                     }
                 },
                 (error) => {
                     console.error("Geolocation error", error);
                     setError("Unable to fetch the location. Enable the location access");
+                    setLoading(false);
                 },
                 {
                     enableHighAccuracy: true,

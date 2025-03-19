@@ -4,7 +4,6 @@ import WeatherDataCard from "./CurrentWeatherCard.js";
 import SearchArea from "./SearchArea.js";
 import backgroundImage from "../assets/backgroundImage.png";
 
-
 const BodyPlaceholder = () => {
     const [weather, setWeather] = useState(null);
     const [error, setError] = useState("");
@@ -22,7 +21,9 @@ const BodyPlaceholder = () => {
             <div className="search-area">
                 <SearchArea setWeather={setWeather} setError={setError} setLoading={setLoading}/>
             </div>
+            
             <WeatherDataCard weatherData={weather} error={error} loading={loading}/>
+
         </div>
     )
 };
