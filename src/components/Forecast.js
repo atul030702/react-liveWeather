@@ -2,7 +2,8 @@
 
 
 
-const Forecast = () => {
+const Forecast = ({ upcomingForecast }) => {
+    console.log(upcomingForecast);
 
     const getUpcomingHourForecast = (hourlyData) => {
     

@@ -3,10 +3,7 @@ import minTempImg from "../assets/min_temp.svg";
 import avgHumidity from "../assets/humidity.svg";
 import uvIndex from "../assets/uv-index.png";
 
-
-
 const DayForecast = ({ dayForecastData }) => {
-    console.log(dayForecastData);
 
     const { 
         avghumidity, 
@@ -20,8 +17,7 @@ const DayForecast = ({ dayForecastData }) => {
 
     return (
         <div className="day-forecast-element">
-            <h2 className="header-text">Today's Weather Forecast</h2>
-            <div className="body-element">
+                <p className="header-text">Today's Weather Forecast</p>
                 <div className="day-forecast-description">
                     <img src={condition?.icon} alt="weather-description-image"/>
                     <h4>{condition?.text}</h4>
@@ -50,7 +46,7 @@ const DayForecast = ({ dayForecastData }) => {
                     <h4>Prediction for Rain: {daily_chance_of_rain?.toFixed(1)}%</h4>
                     <h4>Prediction for Snow: {daily_chance_of_snow?.toFixed(1)}%</h4>
                 </div>
-            </div>
+
         </div>
     );
 

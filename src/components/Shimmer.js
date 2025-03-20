@@ -25,7 +25,6 @@ const Shimmer = () => {
                 <div className="aqi-card"></div>
             </div>
             <div className="day-forecast-card">
-                <div className="header-card"></div>
                 <div className="body-card"></div>
             </div>
         </div>
