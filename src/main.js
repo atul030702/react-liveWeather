@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
 
@@ -8,11 +8,14 @@ import Footer from "./components/Footer.js";
 import Forecast from "./components/Forecast.js";
 
 const AppLayout = () => {
+
+    const [weatherData, setWeatherData] = useState(null);
+
     return (
         <div className="app">
             <Header />
 
-            <Outlet />
+            <Outlet context={{ weatherData, setWeatherData }}/>
         </div>
     );
 };

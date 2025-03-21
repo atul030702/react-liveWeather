@@ -5,7 +5,7 @@ import search from "../assets/search.svg";
 import { Separator } from "./Separator.js";
 import { url } from "../utils.js";
 
-const SearchArea = ({ setWeather, setError, setLoading }) => {
+const SearchArea = ({ setWeatherData, setError, setLoading }) => {
     const [searchText, setSearchText] = useState("");
     const [placeholder, setPlaceholder] = useState("Enter City Name");
 
@@ -17,11 +17,11 @@ const SearchArea = ({ setWeather, setError, setLoading }) => {
                 throw new Error("City not found");
             }
             const data = await response.json();
-            setWeather(data);
+            setWeatherData(data);
             setError("");
         } catch (error) {
             console.error(`Error fetching data: ${error}`);
-            setWeather(null);
+            setWeatherData(null);
             setError("City not found. Try again");
         }finally{
             setLoading(false);

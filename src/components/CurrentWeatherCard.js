@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import AqiDetails from "./AqiDetail.js";
 import DayForecast from "./DayForecast.js";
 import Shimmer from "./Shimmer.js";
-import Forecast from "./Forecast.js";
 
 import location from "../assets/location.svg";
 import hotTemperature from "../assets/temperature_high.svg";
@@ -167,7 +166,6 @@ const WeatherDataCard = ({ weatherData, error, loading }) => {
                 <div className="day-forecast">
                     <DayForecast dayForecastData={dayData?.[0]} />
                 </div>
-                <Forecast upcomingForecast={dayData}/>
             </>
         </div>
     );

@@ -40,7 +40,7 @@ const DayForecast = ({ dayForecastData }) => {
                 </div>
                 <div className="uv-element">
                     <img src={uvIndex} alt="uv-index-icon" />
-                    <h3>UV Index: {uv}</h3>
+                    <h3>UV Index: {uv} of 11</h3>
                 </div>
                 <div className="chances-element">
                     <h4>Prediction for Rain: {daily_chance_of_rain?.toFixed(1)}%</h4>
