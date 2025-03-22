@@ -8,11 +8,22 @@ import lowTempIcon from "../assets/temperature_low.svg";
 import highTempIcon from "../assets/temperature_high.svg";
 import visibilityIcon from "../assets/visibility.svg";
 import uvIcon from "../assets/uv-index.png";
+import arrowUpIcon from "../assets/arrowUp.svg";
+import arrowDownIcon from "../assets/arrowDown.svg";
 
 const Forecast = () => {
     const { weatherData } = useOutletContext();
     console.log(weatherData);
     if(!weatherData) return null;
+
+    const [isExpanded, setIsExpanded] = useState(true);
+
+    function toggleExpansion() {
+        setIsExpanded((previousState) => !previousState);
+    }
+    function toggleIcon(boolean) {
+        return boolean === true ? arrowUpIcon : arrowDownIcon;
+    }
 
     function dateAndTime(string) {
         let stringArray = string.split(" ");
@@ -44,14 +55,19 @@ const Forecast = () => {
         }
     }
 
+    function formatNumber(value) {
+        return Number.isInteger(value) ? value : value.toFixed(1);
+    }
+
+
     const localTime = weatherData?.current?.last_updated;
     const lastUpdatedTimeEpoch = weatherData?.current?.last_updated_epoch;
     const locationName = weatherData?.location;
     const todaysForecast = weatherData?.forecast?.forecastday?.[0];
     console.log(todaysForecast);
     const getHour = todaysForecast?.hour;
-
     const filteredArray = filterFutureHours(getHour, lastUpdatedTimeEpoch);
+
 
     return (
         <div className="forecast-container">
@@ -64,8 +80,15 @@ const Forecast = () => {
                     <h4>As of {dateAndTime(localTime)[1]} (local-time)</h4>
                 </div>
                 <div className="body">
-                    <h3>{dateAndTime(localTime)[0]}</h3>
-                    <div className="body-content">
+                    <div className="toggle-element">
+                        <h3>{dateAndTime(localTime)[0]}</h3>
+                        <button className="toggle-btn"
+                            onClick={toggleExpansion}
+                        >
+                            <img src={toggleIcon(isExpanded)} alt="toggle-icon"/>
+                        </button>
+                    </div>
+                    <div className={`body-content ${isExpanded ? "expanded" : "collapsed"}`}>
                         {filteredArray.map((obj) => {
                             return (
                                 <div key={obj?.time_epoch} className="hour-element">
@@ -73,7 +96,7 @@ const Forecast = () => {
                                         <h4>{timeStr(obj?.time)}</h4>
                                         <div className="temp-element">
                                             <img src={returnTempImg(obj?.temp_c)} alt="temp-icon" />
-                                            <p>{obj?.temp_c}°C</p>
+                                            <p>{formatNumber(obj?.temp_c)}°C</p>
                                         </div>
                                         <div className="condition-element">
                                             <img src={obj?.condition?.icon} alt="condition-icon"/>
@@ -81,22 +104,32 @@ const Forecast = () => {
                                         </div>
                                         <div className="wind-element">
                                             <img src={windIcon} alt="wind-icon" />
-                                            <h4>{obj?.wind_dir} {obj?.wind_kph}Km/Hr</h4>
+                                            <div>
+                                                <p>Wind</p>
+                                                <h4>{obj?.wind_dir} {formatNumber(obj?.wind_kph)}Km/Hr</h4>
+                                            </div>
                                         </div>
                                     </div>
                                     <div className="second-column">
-                                        <h4 className="feels-like-element">Feels Like: {obj?.feelslike_c}°C</h4>
+                                        <h4 className="feels-like-element">Feels Like: {formatNumber(obj?.feelslike_c)}°C</h4>
                                         <div className="humidity-element">
                                             <img src={humidityIcon} alt="humidity-icon" />
-                                            <h4>{obj?.humidity}%</h4>
+                                            <div>
+                                                <p>Humidity</p>
+                                                <h4>{formatNumber(obj?.humidity)}%</h4>
+                                            </div>
+                                            
                                         </div>
                                         <div className="visibility-element">
                                             <img src={visibilityIcon} alt="visibility-icon"/>
-                                            <h4>{obj?.vis_km} Km</h4>
+                                            <div>
+                                                <p>Visibility</p>
+                                                <h4>{formatNumber(obj?.vis_km)} Km</h4>
+                                            </div>
                                         </div>
                                         <div className="uv-element">
                                             <img src={uvIcon} alt="uv-icon"/>
-                                            <h4>UV Index: {obj?.uv} of 11</h4>
+                                            <h4>UV Index: {formatNumber(obj?.uv)} of 11</h4>
                                         </div>
                                     </div>
                                 </div>

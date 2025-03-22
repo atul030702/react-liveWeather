@@ -15,6 +15,10 @@ const DayForecast = ({ dayForecastData }) => {
         daily_chance_of_snow,
     } = dayForecastData?.day;
 
+    function formatNumber(value) {
+        return Number.isInteger(value) ? value : value.toFixed(1);
+    }
+
     return (
         <div className="day-forecast-element">
                 <p className="header-text">Today's Weather Forecast</p>
@@ -26,25 +30,25 @@ const DayForecast = ({ dayForecastData }) => {
                 <div className="minmax-temperature">
                     <div>
                         <img src={minTempImg} alt="minimum-temperature-icon" />
-                        <h3>Min Temperature: {mintemp_c?.toFixed(1)}°C</h3>
+                        <h3>Min Temperature: {formatNumber(mintemp_c)}°C</h3>
                     </div>
 
                     <div>
                         <img src={maxTempImg} alt="maximum-temperature-icon" />
-                        <h3>Max Temperature: {maxtemp_c?.toFixed(1)}°C</h3>
+                        <h3>Max Temperature: {formatNumber(maxtemp_c)}°C</h3>
                     </div>
                 </div>
                 <div className="avg-humidity-element">
                     <img src={avgHumidity} alt="average-humidity-icon" />
-                    <h3>Average Humidity: {avghumidity}%</h3>
+                    <h3>Average Humidity: {formatNumber(avghumidity)}%</h3>
                 </div>
                 <div className="uv-element">
                     <img src={uvIndex} alt="uv-index-icon" />
-                    <h3>UV Index: {uv} of 11</h3>
+                    <h3>UV Index: {formatNumber(uv)} of 11</h3>
                 </div>
                 <div className="chances-element">
-                    <h4>Prediction for Rain: {daily_chance_of_rain?.toFixed(1)}%</h4>
-                    <h4>Prediction for Snow: {daily_chance_of_snow?.toFixed(1)}%</h4>
+                    <h4>Prediction for Rain: {formatNumber(daily_chance_of_rain)}%</h4>
+                    <h4>Prediction for Snow: {formatNumber(daily_chance_of_snow)}%</h4>
                 </div>
 
         </div>

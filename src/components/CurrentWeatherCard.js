@@ -73,17 +73,21 @@ const WeatherDataCard = ({ weatherData, error, loading }) => {
         return parts.length > 1 ? parts[1].trim() : parts[0];
     };
 
+    function formatNumber(value) {
+        return Number.isInteger(value) ? value : value.toFixed(1);
+    }
+
 
     const searchedLocation = weatherData?.location;
-    const currentTemperature = weatherData?.current?.heatindex_c?.toFixed(1) ?? weatherData?.current?.temp_c?.toFixed(1) ?? "--";
-    const feelsLikeTemp = weatherData?.current?.feelslike_c;
+    const currentTemperature = formatNumber(weatherData?.current?.heatindex_c) ?? formatNumber(weatherData?.current?.temp_c) ?? "--";
+    const feelsLikeTemp = formatNumber(weatherData?.current?.feelslike_c);
     const currentCondition = weatherData?.current?.condition;
     const dayOrNightIndex = weatherData?.current?.is_day;
-    const precipitation = weatherData?.current?.precip_mm.toFixed(1);
-    const humidity = weatherData?.current?.humidity;
-    const visibility = weatherData?.current?.vis_km;
-    const wind = weatherData?.current?.wind_kph;
-    const pressure = weatherData?.current?.pressure_mb;
+    const precipitation = formatNumber(weatherData?.current?.precip_mm);
+    const humidity = formatNumber(weatherData?.current?.humidity);
+    const visibility = formatNumber(weatherData?.current?.vis_km);
+    const wind = formatNumber(weatherData?.current?.wind_kph);
+    const pressure = formatNumber(weatherData?.current?.pressure_mb);
     const aqi = weatherData?.current?.air_quality;
     const dayData = weatherData?.forecast?.forecastday;
 
@@ -119,14 +123,14 @@ const WeatherDataCard = ({ weatherData, error, loading }) => {
                         <div className="humidity-element">
                             <img src={humidityImg} alt="humidity-icon" />
                             <div>
-                                <h3>{humidity?.toFixed(0)}%</h3>
+                                <h3>{humidity}%</h3>
                                 <h4>Humidity</h4>
                             </div>
                         </div>
                         <div className="visibility-element">
                             <img src={visibilityImg} alt="visibility-icon"/>
                             <div>
-                                <h3>{visibility?.toFixed(1)} Km</h3>
+                                <h3>{visibility} Km</h3>
                                 <h4>Visibility</h4>
                             </div>
                         </div>
@@ -136,14 +140,14 @@ const WeatherDataCard = ({ weatherData, error, loading }) => {
                         <div className="wind-element">
                             <img src={windImg} alt="wind-icon" />
                             <div>
-                                <h3>{wind?.toFixed(1)} Km/Hr</h3>
+                                <h3>{wind} Km/Hr</h3>
                                 <h4>Wind Speed</h4>
                             </div>
                         </div>
                         <div className="pressure-element">
                             <img src={pressureImg} alt="pressure-icon"/>
                             <div>
-                                <h3>{pressure?.toFixed(1)} mb</h3>
+                                <h3>{pressure} mb</h3>
                                 <h4>Pressure</h4>
                             </div>
                         </div>
