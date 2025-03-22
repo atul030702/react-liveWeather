@@ -1,5 +1,6 @@
 import { useOutletContext } from "react-router";
 import { useState } from "react";
+import Next2DayForecast from "./Next2DayForecast.js";
 
 import humidityIcon from "../assets/humidity_percentage.svg";
 import windIcon from "../assets/windy.svg";
@@ -13,7 +14,6 @@ import arrowDownIcon from "../assets/arrowDown.svg";
 
 const Forecast = () => {
     const { weatherData } = useOutletContext();
-    console.log(weatherData);
     if(!weatherData) return null;
 
     const [isExpanded, setIsExpanded] = useState(true);
@@ -59,15 +59,27 @@ const Forecast = () => {
         return Number.isInteger(value) ? value : value.toFixed(1);
     }
 
+    const dataForNext2Days = weatherData?.forecast?.forecastday;
+    const filterData2Days = (array) => {
+        const newArray = []
+        if(array.length === 1) {
+            newArray;
+        }else if(array.length === 2) {
+            newArray.push(array[1]);
+        }else if(array.length === 3) {  
+            newArray.push(array[1], array[2]);
+        }else{ newArray}
+        return newArray;
+    };
+    const data = filterData2Days(dataForNext2Days);
+
 
     const localTime = weatherData?.current?.last_updated;
     const lastUpdatedTimeEpoch = weatherData?.current?.last_updated_epoch;
     const locationName = weatherData?.location;
     const todaysForecast = weatherData?.forecast?.forecastday?.[0];
-    console.log(todaysForecast);
     const getHour = todaysForecast?.hour;
     const filteredArray = filterFutureHours(getHour, lastUpdatedTimeEpoch);
-
 
     return (
         <div className="forecast-container">
@@ -139,7 +151,9 @@ const Forecast = () => {
                 </div>
             </div>
             <div className="future-forecast">
-
+                {data.map((obj) => (
+                    <Next2DayForecast key={obj?.date_epoch} data={obj}/>
+                ))}
             </div>
         </div>
     );

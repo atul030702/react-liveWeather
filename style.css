@@ -853,6 +853,7 @@ body::-webkit-scrollbar{
     display: var(--display-flex);
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     border-radius: var(--radius-children);
     background-color: var(--background-color-child);
     margin: 20px;
