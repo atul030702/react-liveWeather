@@ -867,7 +867,6 @@ body::-webkit-scrollbar{
     .hourly-forecast{
         width: 100%;
         height: max-content;
-        padding: 5px;
         margin-block: 10px;
         display: var(--display-flex);
         justify-content: center;
@@ -884,7 +883,7 @@ body::-webkit-scrollbar{
             flex-direction: column;
             flex-wrap: wrap;
             border-bottom: 5px solid #aaaaaa;
-            padding: 0 5px;
+            padding: 0 5px 5px 5px;
 
             div{
                 display: var(--display-flex);
@@ -900,7 +899,7 @@ body::-webkit-scrollbar{
 
             h4{
                 padding: 0 0 5px 5px;
-            }
+            };
         };
 
         .body{
@@ -970,5 +969,32 @@ body::-webkit-scrollbar{
                 max-height: 0;
             };
         };
+    };
+
+    .future-forecast{
+        width: 100%;
+        height: max-content;
+        display: var(--display-flex);
+        margin-block: 5px;
+    };
+}
+
+.future-forecast{
+    width: 100%;
+    height: 100%;
+    display: var(--display-flex);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 5px solid #aaaaaa;
+    padding: 5px;
+
+    .coming-day-forecast{
+        width: 100%;
+        height: max-content;
+        display: var(--display-flex);
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
     };
 }
