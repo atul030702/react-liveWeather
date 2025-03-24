@@ -846,6 +846,11 @@ body::-webkit-scrollbar{
         };
     };
 }
+.hour-element:hover{
+    --background-color-child: #e0e0e0;
+    background-color: var(--background-color-child);
+    border: 2px solid transparent;
+}
 
 .forecast-container{
     width: auto;
@@ -878,7 +883,7 @@ body::-webkit-scrollbar{
             justify-content: center;
             flex-direction: column;
             flex-wrap: wrap;
-            border-bottom: 3px solid #aaaaaa;
+            border-bottom: 5px solid #aaaaaa;
             padding: 0 5px;
 
             div{

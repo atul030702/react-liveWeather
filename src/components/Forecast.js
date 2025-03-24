@@ -105,7 +105,7 @@ const Forecast = () => {
                             return (
                                 <div key={obj?.time_epoch} className="hour-element">
                                     <div className="first-column">
-                                        <h4>{timeStr(obj?.time)}</h4>
+                                        <h4>Time: {timeStr(obj?.time)}</h4>
                                         <div className="temp-element">
                                             <img src={returnTempImg(obj?.temp_c)} alt="temp-icon" />
                                             <p>{formatNumber(obj?.temp_c)}°C</p>
