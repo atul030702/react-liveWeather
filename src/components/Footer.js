@@ -16,10 +16,10 @@ const Footer = () => {
             <div className="social-links">
                 <p>Social Links-</p>
                 <a href="https://github.com/atul030702/react-liveWeather" target="_blank" rel="noopener noreferrer">
-                    <img src={github} className="social-icon"/>
+                    <img src={github} className="social-icon" loading="lazy"/>
                 </a>
                 <a href="https://www.linkedin.com/in/atul-kumar-b8a33b2a2" target="_blank" rel="noopener noreferrer">
-                    <img src={linkedin} className="social-icon"/>
+                    <img src={linkedin} className="social-icon" loading="lazy"/>
                 </a>
             </div>
         </div>
