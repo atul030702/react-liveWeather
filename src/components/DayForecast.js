@@ -21,7 +21,7 @@ const DayForecast = ({ dayForecastData }) => {
 
     return (
         <div className="day-forecast-element">
-                <p className="header-text">Today's Weather Forecast</p>
+                <p className="header-text">Today's Weather Outlook</p>
                 <div className="day-forecast-description">
                     <img src={condition?.icon} alt="weather-description-image"/>
                     <h4>{condition?.text}</h4>

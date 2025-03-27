@@ -852,6 +852,54 @@ body::-webkit-scrollbar{
     border: 2px solid transparent;
 }
 
+.toggle-btn{
+    height: 50px;
+    background: transparent;
+    padding: 15px 10px;
+    display: var(--display-flex);
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+    margin: 5px;
+}
+.toggle-btn:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.body-content, 
+.hour-body{
+    width: 100%;
+    height: auto;
+    max-height: 4200px;
+    display: var(--display-flex);
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    overflow: hidden;
+    transform: scaleY(1);
+    transform-origin: top;
+    border-top: 3px solid #aaaaaa;
+    transition: transform 0.5s ease-in-out, 
+                opacity 0.5s ease-in-out,
+                max-height 0.5s ease-in-out;
+    opacity: 1;
+}
+
+.body-content.expanded, 
+.hour-body.expanded{
+    transform: scaleY(1);
+    opacity: 1;
+    max-height: 4200px;
+}
+
+.body-content.collapsed,
+.hour-body.collapsed{
+    transform: scaleY(0);
+    opacity: 0; 
+    max-height: 0;
+}
+
 .forecast-container{
     width: auto;
     height: max-content;
@@ -867,7 +915,7 @@ body::-webkit-scrollbar{
     .hourly-forecast{
         width: 100%;
         height: max-content;
-        margin-block: 10px;
+        margin-block: 5px;
         display: var(--display-flex);
         justify-content: center;
         align-items: center;
@@ -922,51 +970,6 @@ body::-webkit-scrollbar{
                     padding-left: 5px;
                     font-size: 20px;
                 };
-                
-                .toggle-btn{
-                    height: 50px;
-                    background: transparent;
-                    padding: 15px 10px;
-                    display: var(--display-flex);
-                    justify-content: center;
-                    align-items: center;
-                    transition: transform 0.3s ease;
-                    margin: 5px;
-                };
-                .toggle-btn:hover{
-                    cursor: pointer;
-                    transform: scale(1.1);
-                };
-            };
-
-            .body-content{
-                width: 100%;
-                height: auto;
-                max-height: 4000px;
-                display: var(--display-flex);
-                flex-direction: column;
-                align-items: flex-start;
-                justify-content: center;
-                overflow: hidden;
-                transform: scaleY(1);
-                transform-origin: top;
-                border-top: 3px solid #aaaaaa;
-                transition: transform 0.5s ease-in-out, 
-                            opacity 0.5s ease-in-out,
-                            max-height 0.5s ease-in-out;
-                opacity: 1;
-            };
-
-            .body-content.expanded{
-                transform: scaleY(1);
-                opacity: 1;
-                max-height: 4000px;
-            };
-
-            .body-content.collapsed{
-                transform: scaleY(0);
-                opacity: 0; 
-                max-height: 0;
             };
         };
     };
@@ -979,6 +982,61 @@ body::-webkit-scrollbar{
     };
 }
 
+.coming-day-forecast{
+    width: 100%;
+    height: max-content;
+    display: var(--display-flex);
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+
+    .coming-day-header{
+        width: 100%;
+        padding: 5px;
+        display: var(--display-flex);
+        align-items: center;
+        justify-content: center;
+        margin-block: 5px;
+    };
+
+    .coming-day-body{
+        width: 100%;
+        display: var(--display-flex);
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 10px;
+        margin-block: 5px;
+        border-block: 3px solid #aaaaaa;
+
+
+        .min-max-temp, .avg-humidity, 
+        .day-condition, .uv-details, 
+        .prediction{
+           display: var(--display-flex);
+           align-items: center;
+           justify-content: center; 
+
+           .uv-icon{
+                height: 45px;
+                width: 45px;
+            };
+
+            .first-depth{
+                margin-left: 5px;
+                display: var(--display-flex);
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+            };
+        };
+
+        .prediction{
+            gap: 25px;
+        };
+    };
+}
+
 .future-forecast{
     width: 100%;
     height: 100%;
@@ -987,14 +1045,21 @@ body::-webkit-scrollbar{
     align-items: center;
     justify-content: center;
     border-bottom: 5px solid #aaaaaa;
-    padding: 5px;
 
-    .coming-day-forecast{
+    .coming-day-hourly-forecast{
         width: 100%;
         height: max-content;
         display: var(--display-flex);
+        align-items: center;
         justify-content: center;
-        align-items: flex-start;
         flex-direction: column;
+
+        .hour-header{
+            width: 100%;
+            display: var(--display-flex);
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px;
+        };
     };
 }

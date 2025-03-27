@@ -1,24 +1,20 @@
 import { useState } from "react";
+import Hour from "./Hour.js";
 
-import humidityPercentIcon from "../assets/humidity_percentage.svg";
 import humidityIcon from "../assets/humidity.svg";
-import windIcon from "../assets/windy.svg";
-import normalTempIcon from "../assets/normal_temperature.svg";
-import lowTempIcon from "../assets/temperature_low.svg";
-import highTempIcon from "../assets/temperature_high.svg";
 import minMaxTempIcon from "../assets/thermostat.svg";
-import visibilityIcon from "../assets/visibility.svg";
 import uvIcon from "../assets/uv-index.png";
 import arrowUpIcon from "../assets/arrowUp.svg";
 import arrowDownIcon from "../assets/arrowDown.svg";
 
 const Next2DayForecast = ({ data }) => {
+    if(!data) return null;
     console.log(data);
 
     const [expand, setExpand] = useState(false);
 
     function changeTheIcon() {
-        (previousState) => !previousState;
+        setExpand((previousState) => !previousState);
     }
     function chooseIcon(boolean) {
         return boolean === true ? arrowUpIcon : arrowDownIcon;
@@ -41,13 +37,15 @@ const Next2DayForecast = ({ data }) => {
     const uvForDay = data?.day?.uv;
     const rainChanceForDay = data?.day?.daily_chance_of_rain;
     const snowChanceForDay = data?.day?.daily_chance_of_snow;
+    const hourArrayForDay = data?.hour;
 
     return (
         <div className="future-forecast">
             <div className="coming-day-forecast">
                 <div className="coming-day-header">
-                    <h3>{formatDate(localDate)}</h3>
+                    <h3>Weather Outlook for {formatDate(localDate)}</h3>
                 </div>
+
                 <div className="coming-day-body">
                     <div  className="min-max-temp">
                         <img src={minMaxTempIcon} alt="thermostat-icon"/>
@@ -69,16 +67,32 @@ const Next2DayForecast = ({ data }) => {
                         <h4>{conditionForDay?.text}</h4>
                     </div>
                     <div className="uv-details">
-                        <img src={uvIcon} alt="uv-icon"/>
+                        <img src={uvIcon} alt="uv-icon" className="uv-icon"/>
                         <div className="first-depth">
                             <p>UV Index:</p>
                             <h4>{formatNumber(uvForDay)} of 11</h4>
                         </div>
                     </div>
                     <div className="prediction">
-                        <h4>Prediction for Rain: {formatNumber(rainChanceForDay)}</h4>
-                        <h4>Prediction for Snow: {formatNumber(snowChanceForDay)}</h4>
+                        <h4>Prediction for Rain: {formatNumber(rainChanceForDay)}%</h4>
+                        <h4>Prediction for Snow: {formatNumber(snowChanceForDay)}%</h4>
                     </div>
+                </div>
+            </div>
+            <div className="coming-day-hourly-forecast">
+                <div className="hour-header">
+                    <h3>Hourly Weather Data</h3>
+                    <button className="toggle-btn"
+                        onClick={changeTheIcon}
+                    >
+                        <img src={chooseIcon(expand)} alt="toggle-icon"/>
+                    </button>
+                </div>
+
+                <div className={`hour-body ${expand ? "expanded" : "collapsed"}`}>
+                    {hourArrayForDay.map((object) => (
+                        <Hour key={object?.time_epoch} obj={object}/>
+                    ))}
                 </div>
             </div>
         </div>

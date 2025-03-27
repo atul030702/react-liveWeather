@@ -5,7 +5,6 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
 import Header from "./components/Header.js";
 import Body from "./components/Body.js";
 import Footer from "./components/Footer.js";
-//import Forecast from "./components/Forecast.js";
 
 const Forecast = lazy(() => import("./components/Forecast.js"));
 
