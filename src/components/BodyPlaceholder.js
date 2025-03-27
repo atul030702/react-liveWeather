@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import WeatherDataCard from "./CurrentWeatherCard.js";
 import SearchArea from "./SearchArea.js";
-import backgroundImage from "../assets/backgroundImage.png";
+import backgroundImage from "../assets/backgroundImage.webp";
 
 const BodyPlaceholder = ({ weatherData, setWeatherData }) => {
 
