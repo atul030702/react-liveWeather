@@ -3,7 +3,7 @@ import Hour from "./Hour.js";
 
 import humidityIcon from "../assets/humidity.svg";
 import minMaxTempIcon from "../assets/thermostat.svg";
-import uvIcon from "../assets/uv-index.png";
+import uvIcon from "../assets/uv-index.webp";
 import arrowUpIcon from "../assets/arrowUp.svg";
 import arrowDownIcon from "../assets/arrowDown.svg";
 

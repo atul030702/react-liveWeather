@@ -1,7 +1,7 @@
 import maxTempImg from "../assets/max_temp.svg";
 import minTempImg from "../assets/min_temp.svg";
 import avgHumidity from "../assets/humidity.svg";
-import uvIndex from "../assets/uv-index.png";
+import uvIndex from "../assets/uv-index.webp";
 
 const DayForecast = ({ dayForecastData }) => {
 

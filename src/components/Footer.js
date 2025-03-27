@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import linkedin from "../assets/linkedin.png";
-import github from "../assets/github.png";
+import linkedin from "../assets/linkedin.webp";
+import github from "../assets/github.webp";
 
 const Footer = () => {
     return (
@@ -15,11 +15,11 @@ const Footer = () => {
 
             <div className="social-links">
                 <p>Social Links-</p>
-                <a href="https://github.com/atul030702/react-liveWeather" target="_blank" rel="noopener noreferrer">
-                    <img src={github} className="social-icon" loading="lazy"/>
+                <a aria-label="visit github" href="https://github.com/atul030702/react-liveWeather" target="_blank" rel="noopener noreferrer">
+                    <img src={github} className="social-icon" loading="lazy" alt="github-icon"/>
                 </a>
-                <a href="https://www.linkedin.com/in/atul-kumar-b8a33b2a2" target="_blank" rel="noopener noreferrer">
-                    <img src={linkedin} className="social-icon" loading="lazy"/>
+                <a aria-label="visit linkedin" href="https://www.linkedin.com/in/atul-kumar-b8a33b2a2" target="_blank" rel="noopener noreferrer">
+                    <img src={linkedin} className="social-icon" loading="lazy" alt="linkedin-icon"/>
                 </a>
             </div>
         </div>

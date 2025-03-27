@@ -12,7 +12,10 @@ const BodyPlaceholder = ({ weatherData, setWeatherData }) => {
     return (
         <div className="placeholder-container">
             <div className="placeholder-img">
-                <img src={backgroundImage} alt="weather-background-img" className="weather-image"/>
+                <img src={backgroundImage} loading="lazy"
+                    alt="weather-background-img" 
+                    className="weather-image"
+                />
                 <div className="image-text">
                     <h1>Find detailed weather information for</h1>
                     <p>Discover accurate weather updates and air quality index for any place!</p>

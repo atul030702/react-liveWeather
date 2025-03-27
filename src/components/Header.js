@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 
-import usaFlag from "../assets/usa-flag.png";
+import usaFlag from "../assets/usa-flag.webp";
 import { Separator } from "./Separator.js";
 
 const Header = () => {
