@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Autocomplete from "./Autocomplete.js";
 
 import my_location from "../assets/my_location.svg";
 import search from "../assets/search.svg";
@@ -8,6 +9,9 @@ import { url } from "../utils.js";
 const SearchArea = ({ setWeatherData, setError, setLoading }) => {
     const [searchText, setSearchText] = useState("");
     const [placeholder, setPlaceholder] = useState("Enter City Name");
+    const [showSuggestions, setShowSuggestions] = useState(false);
+    const [searchResult, setSearchResult] = useState([]);
+    const [selectedIndex, setSelectedIndex] = useState(-1);
 
     const weatherDataFromAPI = async (query) => {
         setLoading(true);
@@ -79,9 +83,30 @@ const SearchArea = ({ setWeatherData, setError, setLoading }) => {
         weatherDataFromAPI(trimmedText);
         setSearchText("");
     };
+
+    const handleKeyEvent = (e) => {
+        if(!showSuggestions || searchResult.length === 0) return;
+
+        if(e.key === "ArrowDown") {
+            setSelectedIndex((prev) => (prev + 1) % searchResult.length);
+        }else if(e.key === "ArrowUp") {
+            setSelectedIndex((prev) => (prev === 0 ? searchResult.length - 1 : prev - 1));
+        }else if(e.key === "Enter") {
+            e.preventDefault()
+            if(selectedIndex >= 0) {
+                const selectedCity = `${searchResult[selectedIndex].name}, ${searchResult[selectedIndex].country}`
+                setSearchText(selectedCity);
+                setShowSuggestions(false);
+                weatherDataFromAPI(selectedCity);
+                setSearchText("")
+            }else{
+                handleSearch();
+            }
+        }
+    };
     
     return (
-        <div>
+        <div className="search-element">
             <div className="search-box">
                 <button className="location-icon" onClick={getUserLocation}>
                     <img src={my_location} alt="my-location-icon"/>
@@ -93,17 +118,42 @@ const SearchArea = ({ setWeatherData, setError, setLoading }) => {
                     placeholder={placeholder}
                     value={searchText} 
                     className="input-box"
-                    onChange={(e) => {setSearchText(e.target.value);}}
+                    onChange={(e) => {
+                        setSearchText(e.target.value);
+                        setSelectedIndex(-1);
+                        if(e.target.value.trim().length > 0) {
+                            setShowSuggestions(true);
+                        }else{
+                            setShowSuggestions(false)
+                        }
+                    }}
                     onFocus={() => {
                         setPlaceholder("Enter City Name");
                         document.documentElement.style.setProperty("--placeholder-color", "#a0a0a0");
+                        if(searchText.trim().length > 0) {
+                            setShowSuggestions(true);
+                        }
                     }}
+                    onBlur={ () => setShowSuggestions(false) }
+                    onKeyDown={ (e) => handleKeyEvent(e) }
                 />
                 <Separator />
                 <button className="search-image" onClick={handleSearch}>
                     <img src={search} alt="search-icon" />
                 </button>
             </div>
+
+            <Autocomplete 
+                query={searchText} 
+                setQuery={setSearchText}
+                showSuggestion={showSuggestions}
+                setShowSuggestion={setShowSuggestions}
+                searchResult={searchResult}
+                setSearchResult={setSearchResult}
+                selectedIndex={selectedIndex}
+                setSelectedIndex={setSelectedIndex}
+            />
+
         </div>
     );
         
