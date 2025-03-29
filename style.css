@@ -287,14 +287,14 @@ body::-webkit-scrollbar{
         display: var(--display-flex);
         justify-content: space-between;
         align-items: center;
-        margin: 5px;
+        margin: 5px; 
         padding: 0 10px;
 
         .aqi-header{
+            width: 100%;
             display: var(--display-flex);
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
+            justify-content: space-between;
+            align-items: center;
 
             .aqi-description{
                 width: max-content;
