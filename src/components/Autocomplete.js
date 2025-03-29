@@ -51,6 +51,12 @@ const Autocomplete = ({
         setShowSuggestion(false);
     };
 
+    function getRegionName(region) {
+        if(!region || typeof region !== "string") return "";
+        const parts = region.split(",");
+        return parts.length > 1 ? parts[1].trim() : parts[0];
+    }
+
     console.log(searchResult);
 
     return loading ? (<p className="loading-text">Loading...</p>) : showSuggestion && searchResult.length > 0 &&(
@@ -65,7 +71,7 @@ const Autocomplete = ({
                         onMouseEnter={ () => setSelectedIndex(index) }
                         onClick = {() => handleSelect(city)}
                     >
-                        {city?.name}, {city?.name !== city?.region ? city?.region : city?.country}, {city?.country}
+                        {city?.name}, {city?.name !== city?.region ? getRegionName(city?.region) : city?.country}, {city?.country}
                     </li>
                 ))}
             </ul>
