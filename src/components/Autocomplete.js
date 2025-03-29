@@ -71,7 +71,7 @@ const Autocomplete = ({
                         onMouseEnter={ () => setSelectedIndex(index) }
                         onClick = {() => handleSelect(city)}
                     >
-                        {city?.name}, {city?.name !== city?.region ? getRegionName(city?.region) : city?.country}, {city?.country}
+                        {city?.name}, {city?.name !== city?.region ? getRegionName(city?.region) : ""}, {city?.country}
                     </li>
                 ))}
             </ul>
