@@ -108,7 +108,7 @@ const SearchArea = ({ setWeatherData, setError, setLoading }) => {
     return (
         <div className="search-element">
             <div className="search-box">
-                <button className="location-icon" onClick={getUserLocation}>
+                <button className="location-icon" title="location" onClick={getUserLocation}>
                     <img src={my_location} alt="my-location-icon"/>
                 </button>
                 <Separator />
@@ -138,7 +138,7 @@ const SearchArea = ({ setWeatherData, setError, setLoading }) => {
                     onKeyDown={ (e) => handleKeyEvent(e) }
                 />
                 <Separator />
-                <button className="search-image" onClick={handleSearch}>
+                <button className="search-image" title="search" onClick={handleSearch}>
                     <img src={search} alt="search-icon" />
                 </button>
             </div>

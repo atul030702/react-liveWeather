@@ -25,10 +25,16 @@ const BodyPlaceholder = ({ weatherData, setWeatherData }) => {
                 <SearchArea setWeatherData={setWeatherData} setError={setError} setLoading={setLoading}/>
             </div>
             
-            <WeatherDataCard weatherData={weatherData} error={error} loading={loading}/>
+            {weatherData ? (
+                <WeatherDataCard weatherData={weatherData} error={error} loading={loading}/>
+            ) : (
+                <div className="carousel">
+                    <h3>Planning a trip or trek? Check the weather before heading to these beautiful places.</h3>
+                </div>
+            )}  
 
         </div>
-    )
+    );
 };
 
 export default BodyPlaceholder;
